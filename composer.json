@@ -1,0 +1,32 @@
+{
+    "name": "myfind/db-backup",
+    "description": "基于thinkphp-orm的数据库备份、还原库",
+    "homepage": "http://www.myfind.com/",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "myfind",
+            "email": "364998473@qq.com"
+        }
+    ],
+    "type": "library",
+    "keywords": [
+        "framework",
+        "thinkphp",
+        "orm",
+        "数据库备份",
+        "数据库还原"
+    ],
+    "require": {
+        "php": ">=7.1.0",
+        "topthink/think-orm": "^3.0"
+    },
+    "autoload":{
+        "psr-4":{ 
+            "tpcms\\" :  "src/"
+        }
+    }
+
+
+
+}
