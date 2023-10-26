@@ -1,5 +1,5 @@
 <?php
-namespace myfind;
+namespace myfind\backup;
 
 use think\facade\Db;
 use think\facade\Config;
