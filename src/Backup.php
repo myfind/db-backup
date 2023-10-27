@@ -33,7 +33,8 @@ class Backup {
      * 备份配置
      * @var integer
      */
-    private $config = array('path' => './BackupData/', //数据库备份路径
+    private $config = array(
+        'path' => './BackupData/', //数据库备份路径
         'part' => 20971520, //数据库备份卷大小
         'compress' => 0, //数据库备份文件是否启用压缩 0不压缩 1 压缩
         'level' => 9, //数据库备份文件压缩级别 1普通 4 一般  9最高
@@ -264,7 +265,7 @@ class Backup {
             //备份数据记录
             $result = $db->query("SELECT * FROM `{$table}` LIMIT {$start}, 1000");
             foreach ($result as $row) {
-                $row = array_map('addslashes', $row);
+                //$row = array_map('addslashes', $row);
                 $sql = "INSERT INTO `{$table}` VALUES ('" . str_replace(array("\r", "\n"), array('\\r', '\\n'), implode("', '", $row)) . "');\n";
                 if (false === $this->write($sql)) {
                     return false;
@@ -432,7 +433,9 @@ class Backup {
      * 析构方法，用于关闭文件资源
      */
     public function __destruct() {
-        $this->config['compress'] ? @gzclose($this->fp) : @fclose($this->fp);
+        if($this->fp){
+            $this->config['compress'] ? @gzclose($this->fp) : @fclose($this->fp);
+        }
     }
 }
 
