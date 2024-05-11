@@ -57,6 +57,13 @@ class Backup {
         }
     }
 
+    /**
+     * 获取配置信息
+     */
+    public function get(){
+        return $this->config;
+    }
+
 
     /**
      * 设置脚本运行超时时间
